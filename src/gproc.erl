@@ -313,7 +313,7 @@ request_wait({n,C,_} = Key, Timeout) when C==l; C==g ->
     receive
         {gproc, WRef, registered, {_K, Pid, V}} ->
 	    case Timeout of
-		no_timer -> ignore;
+		infinity -> ignore;
 		_ -> erlang:cancel_timer(TRef)
 	    end,
             {Pid, V};
